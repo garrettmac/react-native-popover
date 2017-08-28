@@ -344,14 +344,14 @@ var Popover = React.createClass({
 
     return (
       <TouchableWithoutFeedback onPress={this.props.onClose}>
-        <View style={[styles.container, contentSizeAvailable && styles.containerVisible ]}>
+        <View style={[styles.container, contentSizeAvailable && styles.containerVisible,this.props.containerStyle ]}>
           <Animated.View style={[styles.background, ...extendedStyles.background]}/>
           <Animated.View style={[styles.popover, {
             top: popoverOrigin.y,
             left: popoverOrigin.x,
-            }, ...extendedStyles.popover]}>
+            }, ...extendedStyles.popover,this.props.popoverStyle]}>
             <Animated.View style={arrowStyle}/>
-            <Animated.View ref='content' onLayout={this.measureContent} style={contentStyle}>
+            <Animated.View ref='content' onLayout={this.measureContent} style={[contentStyle,this.props.style]}>
               {this.props.children}
             </Animated.View>
           </Animated.View>
